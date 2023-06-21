@@ -9,7 +9,6 @@ public class Restaurant {
     private String imageURL;
 
     public Restaurant(){
-
     }
 
     public Restaurant(String name, String address, String description, String businessHour, String imageURL){

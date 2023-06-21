@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RestaurantAdapter adapter;
     private ImageView btnAdd_restaurant;
 
+    private Button btnLogout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         rvRestaurantList = findViewById(R.id.rv_restaurant_list);
         btnAdd_restaurant = findViewById(R.id.btn_add_restaurant);
+        btnLogout = findViewById(R.id.btnLogout);
 
         adapter = new RestaurantAdapter(this);
         mDatabase = new RestaurantDatabase();
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rvRestaurantList.setLayoutManager(new LinearLayoutManager(this));
 
         btnAdd_restaurant.setOnClickListener(this);
+        btnLogout.setOnClickListener(this);
     }
 
     @Override
@@ -65,7 +72,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent addIntent = new Intent(this, CreateRestaurant.class);
                 startActivity(addIntent);
                 break;
-            //tinggal nambahin case lain
+            case R.id.btnLogout: // Tambahkan case untuk Button "btnLogout"
+                FirebaseAuth.getInstance().signOut(); // Lakukan logout dari autentikasi Firebase
+                // Redirect ke halaman login atau halaman utama aplikasi
+                Toast.makeText(MainActivity.this, "Anda telah Logout", Toast.LENGTH_SHORT).show();
+                Intent logoutIntent = new Intent(this, Splash.class);
+                startActivity(logoutIntent);
+                finish(); // Mengakhiri MainActivity agar tidak dapat diakses kembali setelah logout
+                break;
         }
     }
 }

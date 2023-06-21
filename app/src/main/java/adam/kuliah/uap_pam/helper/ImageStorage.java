@@ -17,7 +17,6 @@ public class ImageStorage {
     public String getImageURL() {
         return imageURL;
     }
-
     private String imageURL;
 
     public ImageStorage() {

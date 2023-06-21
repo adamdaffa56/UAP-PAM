@@ -31,12 +31,10 @@ public class DetailRestaurant extends AppCompatActivity implements View.OnClickL
         ivRestaurant = findViewById(R.id.ivDetailRestoran);
 
         btn_back = findViewById(R.id.btn_back);
-        btnDetailEdit = findViewById(R.id.btnDetailEdit);
-        btnDetailHapus = findViewById(R.id.btnDetailHapus);
+
 
         btn_back.setOnClickListener(this);
-        btnDetailEdit.setOnClickListener(this);
-        btnDetailHapus.setOnClickListener(this);
+
 
         Bundle restaurantBundle = getIntent().getBundleExtra("restaurantBundle");
         if (restaurantBundle != null) {
@@ -70,12 +68,6 @@ public class DetailRestaurant extends AppCompatActivity implements View.OnClickL
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.btnDetailEdit:
-                Intent intent1 = new Intent(this, EditRestaurant.class);
-                startActivity(intent1);
-                break;
-            case R.id.btnDetailHapus:
-                //Fungsi Hapus
         }
     }
 }

@@ -78,37 +78,5 @@
             tools:srcCompat="@drawable/detail_maps" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnDetailEdit"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="28dp"
-        android:backgroundTint="@color/button_add"
-        android:text="Edit"
-        android:textAllCaps="false"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnDetailHapus" />
-
-    <Button
-        android:id="@+id/btnDetailHapus"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="28dp"
-        android:backgroundTint="#E6E6E6"
-        android:text="Hapus"
-        android:textAllCaps="false"
-        android:textColor="#FC7681"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDetailEdit"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#FC7681"
-        app:strokeWidth="1dp" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
