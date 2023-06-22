@@ -72,13 +72,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent addIntent = new Intent(this, CreateRestaurant.class);
                 startActivity(addIntent);
                 break;
-            case R.id.btnLogout: // Tambahkan case untuk Button "btnLogout"
-                FirebaseAuth.getInstance().signOut(); // Lakukan logout dari autentikasi Firebase
-                // Redirect ke halaman login atau halaman utama aplikasi
+            case R.id.btnLogout:
+                FirebaseAuth.getInstance().signOut();
                 Toast.makeText(MainActivity.this, "Anda telah Logout", Toast.LENGTH_SHORT).show();
                 Intent logoutIntent = new Intent(this, Splash.class);
                 startActivity(logoutIntent);
-                finish(); // Mengakhiri MainActivity agar tidak dapat diakses kembali setelah logout
+                finish();
                 break;
         }
     }
