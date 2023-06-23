@@ -20,7 +20,7 @@ import adam.kuliah.uap_pam.model.Restaurant;
 public class RestaurantDatabase {
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
-    private String url = "https://uappam111-default-rtdb.asia-southeast1.firebasedatabase.app/";
+    private String url = "https://uappam111-default-rtdb.asia-southeast1.firebasedatabase.app";
 
     public RestaurantDatabase() {
         mDatabase = FirebaseDatabase.getInstance(url).getReference("/");
@@ -34,6 +34,7 @@ public class RestaurantDatabase {
                 List<Restaurant> restaurantList = new ArrayList<>();
                 for (DataSnapshot restaurantSnapshot : snapshot.getChildren()) {
                     Restaurant restaurant = restaurantSnapshot.getValue(Restaurant.class);
+                    restaurant.setRestaurantId(restaurantSnapshot.getKey());
                     if (restaurant != null) {
                         restaurantList.add(restaurant);
                     }
@@ -49,8 +50,8 @@ public class RestaurantDatabase {
     }
 
 
-    public void addRestaurant(String name, String address, String businessHour, String description, String imageURL) {
-        Restaurant newRestaurant = new Restaurant(name, address, businessHour, description, imageURL);
+    public void addRestaurant(String name, String address, String businessHour, String description, String imageURL, String longitude, String latitude) {
+        Restaurant newRestaurant = new Restaurant(name, address, businessHour, description, imageURL, longitude, latitude);
 
         DatabaseReference newRestaurantRef = mDatabase.child("restaurants").push();
         String newRestaurantId = newRestaurantRef.getKey();

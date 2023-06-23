@@ -47,6 +47,8 @@ public class DetailRestaurant extends AppCompatActivity implements View.OnClickL
 
         btn_back.setOnClickListener(this);
 
+        btnLihatMaps = findViewById(R.id.btnLihatMaps);
+        btnLihatMaps.setOnClickListener(this);
 
         Bundle restaurantBundle = getIntent().getBundleExtra("restaurantBundle");
         if (restaurantBundle != null) {
@@ -55,6 +57,12 @@ public class DetailRestaurant extends AppCompatActivity implements View.OnClickL
             String businessHour = restaurantBundle.getString("businessHour");
             String description = restaurantBundle.getString("description");
             String imageURL = restaurantBundle.getString("imageURL");
+
+            latitude = restaurantBundle.getString("latitude");
+            longitude = restaurantBundle.getString("longitude");
+
+            tvLatitude.setText(latitude);
+            tvLongitude.setText(longitude);
 
             tvName.setText(name);
             tvAddress.setText(address);
@@ -127,6 +135,12 @@ public class DetailRestaurant extends AppCompatActivity implements View.OnClickL
             case R.id.btn_back:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.btnLihatMaps:
+                Intent intentmap = new Intent(this, MapsActivity.class);
+                intentmap.putExtra("latitude", latitude);
+                intentmap.putExtra("longitude", longitude);
+                startActivity(intentmap);
                 break;
         }
     }

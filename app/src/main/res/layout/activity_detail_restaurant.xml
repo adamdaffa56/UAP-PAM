@@ -68,15 +68,33 @@
             android:layout_marginTop="10dp"
             android:text="Restoran yang menyajikan makanan khas Indonesia terutama Jawa dengan menggunakan bumbu khas dan bahan masakan yang spesial. " />
 
-        <ImageView
-            android:id="@+id/ivMaps"
-            android:layout_width="394dp"
+        <TextView
+            android:id="@+id/tvLatitude"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            tools:srcCompat="@drawable/detail_maps" />
+            android:text="Ini Latitude"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tvLongitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ini Longitude"/>
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLihatMaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/button_add"
+        android:text="Lihat di Maps"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,35 +2,30 @@ package adam.kuliah.uap_pam;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.os.Handler;
+import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Splash extends AppCompatActivity implements View.OnClickListener {
-    private Button btDaftar, btMasuk;
+public class Splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //menghilangkan ActionBar
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
 
-        btDaftar = findViewById(R.id.btDaftar);
-        btMasuk = findViewById(R.id.btMasuk);
-
-        btDaftar.setOnClickListener(this);
-        btMasuk.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v == btDaftar) {
-            Intent intent = new Intent(Splash.this, Register.class);
-            startActivity(intent);
-        }
-        else {
-            Intent intent = new Intent(Splash.this, Login.class);
-            startActivity(intent);
-        }
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(getApplicationContext(), OnBoarding.class));
+                finish();
+            }
+        }, 3000L); //3000 L = 3 detik
     }
 }
+
+
